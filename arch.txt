@@ -1,0 +1,35 @@
+                  ┌──────────────────────┐
+                  │      TallyPrime      │
+                  │   Source System      │
+                  └──────────┬───────────┘
+                             │
+                       XML over HTTP
+                             │
+                             ▼
+                  ┌──────────────────────┐
+                  │   FastAPI Backend    │
+                  │                      │
+                  │ Python Integration   │
+                  │ ├─ Tally communication
+                  │ ├─ XML parsing        │
+                  │ ├─ Validation         │
+                  │ ├─ Transformation     │
+                  │ ├─ Synchronization    │
+                  │ └─ Logging            │
+                  └──────────┬───────────┘
+                             │
+                       MySQL Connector
+                             │
+                             ▼
+                  ┌──────────────────────┐
+                  │       MySQL 8        │
+                  │ Destination Database │
+                  └──────────────────────┘
+                             ▲
+                             │
+                       REST API
+                             │
+                  ┌──────────┴───────────┐
+                  │    React + Vite      │
+                  │     Frontend         │
+                  └──────────────────────┘
