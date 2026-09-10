@@ -1,36 +1,35 @@
-                  ┌─────────────────┐
-                  │     TALLY       │
-                  │    TallyPrime   │
-                  └────────┬────────┘
-                           │
-                    XML over HTTP
-                           │
-                           ▼
-                  ┌─────────────────┐
-                  │     PYTHON      │
-                  │   FastAPI App   │
-                  └────────┬────────┘
-                           │
-          ┌────────────────┼────────────────┐
-          │                │                │
-          ▼                ▼                ▼
-    Tally Service      XML Parser      Sync Service
-          │                │                │
-          └────────────────┼────────────────┘
-                           │
-                           ▼
-                  ┌─────────────────┐
-                  │   Repository    │
-                  │  Database Layer │
-                  └────────┬────────┘
-                           │
-                           ▼
-                  ┌─────────────────┐
-                  │      MYSQL      │
-                  ├─────────────────┤
-                  │    ledgers      │
-                  │    vouchers     │
-                  │ voucher_entries │
-                  │   sync_state    │
-                  │    sync_log     │
-                  └─────────────────┘
+                  ┌──────────────────────┐
+                  │      TallyPrime      │
+                  │   Source System      │
+                  └──────────┬───────────┘
+                             │
+                       XML over HTTP
+                             │
+                             ▼
+                  ┌──────────────────────┐
+                  │   FastAPI Backend    │
+                  │                      │
+                  │ Python Integration   │
+                  │ ├─ Tally communication
+                  │ ├─ XML parsing        │
+                  │ ├─ Validation         │
+                  │ ├─ Transformation     │
+                  │ ├─ Synchronization    │
+                  │ └─ Logging            │
+                  └──────────┬───────────┘
+                             │
+                       MySQL Connector
+                             │
+                             ▼
+                  ┌──────────────────────┐
+                  │       MySQL 8        │
+                  │ Destination Database │
+                  └──────────────────────┘
+                             ▲
+                             │
+                       REST API
+                             │
+                  ┌──────────┴───────────┐
+                  │    React + Vite      │
+                  │     Frontend         │
+                  └──────────────────────┘
